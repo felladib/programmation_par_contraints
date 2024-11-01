@@ -79,7 +79,6 @@ L'opérateur = en Prolog vérifie l’unification (ou compatibilité) entre deux
 Exemple :
 ```prolog
 ?- 3 + 2 =:= 5.  % true
-```
 ?- X = 5.         % X devient 5
 ```
 
@@ -88,8 +87,8 @@ Exemple :
 
 ```prolog
 ?- X = 5.
-```
 % X = 5
+```
 \= : Vérifie si deux termes ne peuvent pas être unifiés.
 
 ```prolog
