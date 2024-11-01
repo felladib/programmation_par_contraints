@@ -1,18 +1,11 @@
 # Notes sur la Récursivité en Prolog
 
 ## Concepts de Base
-La récursivité en Prolog consiste à…
 
-### Exemple de Longueur de Liste
-
-```prolog
-longueur([], 0).  
-longueur([_|Reste], N) :- longueur(Reste, N1), N is N1 + 1. 
-```
 
 Bien sûr ! Prolog est un langage de programmation logique principalement utilisé en intelligence artificielle, linguistique, et recherche de bases de connaissances. Il repose sur la logique de prédicats et utilise un mécanisme de backtracking pour résoudre des requêtes. Voici les concepts de base de Prolog pour bien débuter :
 
-1. Faits et Règles
+### 1. Faits et Règles
 Faits : Ce sont des affirmations qui décrivent des informations connues. Exemple :
 
 ```prolog
@@ -27,19 +20,19 @@ ami(X, Y) :- aime(X, Y), aime(Y, X).
 ```
 Cela signifie que X et Y sont amis si X aime Y et Y aime X.
 
-2. Requêtes
+### 2. Requêtes
 Les requêtes interrogent les faits et règles pour obtenir des réponses.
 ```prolog
 ?- aime(marie, chocolat).
 ```
 Cette requête demande si le fait aime(marie, chocolat) est vrai. Si Prolog trouve un fait ou une règle le confirmant, il renvoie true. Sinon, il renvoie false.
-3. Variables
+### 3. Variables
 Les variables commencent par une majuscule ou _. Elles représentent des éléments inconnus que Prolog va essayer d'associer.
 ```prolog
 ?- aime(marie, X).
 ```
 Ici, X est une variable. Prolog cherchera tous les éléments que Marie aime.
-4. Backtracking (Retour sur trace)
+### 4. Backtracking (Retour sur trace)
 Prolog explore les solutions possibles et, si une solution ne convient pas, il revient en arrière pour essayer une autre option.
 Exemple :
 ```prolog
@@ -47,7 +40,7 @@ aime(marie, chocolat).
 aime(marie, pizza).
 ```
 Avec la requête ?- aime(marie, X)., Prolog retournera d'abord X = chocolat, puis X = pizza en utilisant le backtracking pour explorer toutes les solutions.
-5. Opérateur cut (!)
+### 5. Opérateur cut (!)
 L'opérateur ! (cut) bloque le backtracking lorsqu’il est atteint, limitant les solutions possibles.
 Exemple :
 ```prolog
@@ -55,13 +48,13 @@ parent(X, Y) :- pere(X, Y), !.
 parent(X, Y) :- mere(X, Y).
 ```
 Si Prolog trouve pere(X, Y), il ne cherchera pas mere(X, Y) à cause du !.
-6. Listes
+### 6. Listes
 Les listes sont une structure de données importante en Prolog. Elles se définissent entre crochets [ ] et peuvent être manipulées par décomposition.
 ```prolog
 [Tete|Reste] = [1, 2, 3, 4].
 ```
 Ici, Tete sera 1 et Reste sera [2, 3, 4].
-7. Récursivité
+### 7. Récursivité
 Prolog utilise la récursivité pour parcourir des listes ou traiter des structures répétitives.
 Exemple : Calculer la longueur d'une liste.
 ```prolog
@@ -74,15 +67,15 @@ Prolog utilise is pour évaluer des expressions arithmétiques.
 X is 3 + 2.
 ```
 Cela assigne 5 à X.
-9. Égalité et unification
+### 9. Égalité et unification
 L'opérateur = en Prolog vérifie l’unification (ou compatibilité) entre deux termes, mais il n’évalue pas d'expressions. Pour comparer des valeurs arithmétiques, il faut utiliser =:=.
-Exemple :
+### Exemple :
 ```prolog
 ?- 3 + 2 =:= 5.  % true
 ?- X = 5.         % X devient 5
 ```
 
-1. Opérateurs de comparaison
+### 10. Opérateurs de comparaison
 = : Vérifie si deux termes peuvent être unifiés, c'est-à-dire rendus identiques en attribuant des valeurs aux variables.
 
 ```prolog
@@ -114,7 +107,7 @@ Exemple :
 ?- "a" @< "b".
 % true
 ```
-2. Opérateurs arithmétiques
+### 11. Opérateurs arithmétiques
 Les opérateurs arithmétiques nécessitent l’opérateur is pour évaluer l’expression et assigner la valeur.
 
 +, -, *, / : Addition, soustraction, multiplication, et division.
@@ -141,7 +134,7 @@ mod : Modulo, retourne le reste d’une division entière.
 ?- X is 2 ** 3.
 % X = 8
 ```
-3. Opérateurs de comparaison arithmétique
+### 12. Opérateurs de comparaison arithmétique
 Ces opérateurs comparent des expressions arithmétiques, en les évaluant avant de faire la comparaison.
 
 =:= : Égalité entre expressions arithmétiques.
@@ -162,7 +155,7 @@ Ces opérateurs comparent des expressions arithmétiques, en les évaluant avant
 ?- 7 > 3.
 % true
 ```
-4. Opérateurs logiques
+### 13. Opérateurs logiques
 , : Opérateur "et". Toutes les conditions doivent être vraies.
 
 ```prolog
@@ -179,7 +172,7 @@ not ou \+ : Négation. Vérifie que la condition suivante est fausse.
 ?- \+ (X = 5).
 % true si X n'est pas 5
 ``` 
-5. Opérateur de coupure (!)
+### 14. Opérateur de coupure (!)
 ! (cut) : Stoppe le backtracking à cet endroit. Il permet d’empêcher Prolog de rechercher d'autres solutions une fois qu'il en trouve une.
 Exemple sans cut :
 
@@ -195,18 +188,19 @@ max(X, Y, Y).
 ```
 Ici, le cut (!) empêche Prolog de vérifier la seconde règle si X >= Y est vrai.
 
-6. Opérateurs pour les listes
+### 15. Opérateurs pour les listes
 [Tête | Reste] : Structure de liste où Tête est le premier élément et Reste est le reste de la liste.
 ```prolog
 ?- [T|R] = [1, 2, 3].
 % T = 1, R = [2, 3]
 ```
 
-la récursivité signifie qu’une fonction ou une règle s'appelle elle-même pour traiter une partie du problème, jusqu'à ce qu'elle atteigne un cas de base (ou condition d'arrêt) qui termine le processus.
+### la récursivité 
+signifie qu’une fonction ou une règle s'appelle elle-même pour traiter une partie du problème, jusqu'à ce qu'elle atteigne un cas de base (ou condition d'arrêt) qui termine le processus.
 
 Prenons un exemple classique : calculer la longueur d'une liste en Prolog.
 
-Exemple : Calculer la longueur d'une liste
+### Exemple : Calculer la longueur d'une liste
 Supposons que l'on veuille trouver la longueur d'une liste [a, b, c].
 
 Voici comment cela se présente en Prolog :
