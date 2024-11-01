@@ -161,11 +161,13 @@ Ces opérateurs comparent des expressions arithmétiques, en les évaluant avant
 ```prolog
 ?- X = 5, Y = 10.
 % X = 5, Y = 10
+```
 ; : Opérateur "ou". Au moins une des conditions doit être vraie.
 
 ```prolog
 ?- X = 5 ; X = 10.
 % X = 5 ; X = 10 (deux réponses possibles)
+```
 not ou \+ : Négation. Vérifie que la condition suivante est fausse.
 
 ```prolog
